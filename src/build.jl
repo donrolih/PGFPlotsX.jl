@@ -215,7 +215,7 @@ function convert_pdf_to_svg(pdf::AbstractString,
                                           "Make sure one of these are installed and available at PATH and restart Julia."))
     end
     if engine == SVG_PDF_TO_CAIRO
-        cmd = `pdftocairo -svg -l 1 $pdf $svg`
+        cmd = `bash -c "ml poppler; pdftocairo -svg -l 1 $pdf $svg"`
     elseif engine == PDF_TO_SVG
         cmd = `pdf2svg $pdf $svg`
     else
